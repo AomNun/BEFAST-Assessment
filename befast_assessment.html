@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบประเมิน BEFAST เบื้องต้น</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top for better content flow */
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px; /* Add some top margin */
+        }
+        h1 {
+            color: #1a202c; /* Dark text */
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .question-section {
+            background-color: #e2e8f0; /* Lighter blue-gray for sections */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .question-section h2 {
+            color: #2d3748; /* Slightly darker text for headings */
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .options-group label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #4a5568;
+        }
+        .options-group input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2); /* Slightly larger radio buttons */
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        button {
+            background-color: #4299e1; /* Blue button */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #3182ce; /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+        #result-section {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f7fafc; /* Very light background for results */
+            border-radius: 10px;
+            border: 1px solid #cbd5e0;
+            text-align: left;
+            display: none; /* Hidden by default */
+        }
+        #result-section h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        #result-section p {
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+        #result-section .warning {
+            color: #e53e3e; /* Red for warning */
+            font-weight: 700;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fed7d7;
+            border-radius: 8px;
+        }
+        #result-section .normal {
+            color: #38a169; /* Green for normal */
+            font-weight: 700;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #c6f6d5;
+            border-radius: 8px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            button {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl">แบบประเมิน BEFAST เบื้องต้น</h1>
+        <p class="text-gray-600 mb-6">โปรดตอบคำถามต่อไปนี้เพื่อประเมินอาการตามหลัก BEFAST (หากมีอาการผิดปกติ)</p>
+
+        <!-- B: Balance -->
+        <div class="question-section">
+            <h2 class="text-xl">B: Balance (การทรงตัว)</h2>
+            <p class="mb-3 text-gray-700">ผู้ป่วยมีอาการทรงตัวผิดปกติ เช่น เดินเซ ทรงตัวไม่มั่นคง หรือรู้สึกเวียนศีรษะอย่างรุนแรงหรือไม่?</p>
+            <div class="options-group">
+                <label><input type="radio" name="balance" value="yes" class="form-radio"> ใช่</label>
+                <label><input type="radio" name="balance" value="no" class="form-radio"> ไม่ใช่</label>
+            </div>
+        </div>
+
+        <!-- E: Eyes -->
+        <div class="question-section">
+            <h2 class="text-xl">E: Eyes (สายตา)</h2>
+            <p class="mb-3 text-gray-700">ผู้ป่วยมีปัญหาการมองเห็นผิดปกติ เช่น การมองเห็นภาพซ้อน การสูญเสียการมองเห็นข้างใดข้างหนึ่ง หรือเห็นภาพไม่ชัดเจนหรือไม่?</p>
+            <div class="options-group">
+                <label><input type="radio" name="eyes" value="yes" class="form-radio"> ใช่</label>
+                <label><input type="radio" name="eyes" value="no" class="form-radio"> ไม่ใช่</label>
+            </div>
+        </div>
+
+        <!-- F: Face Drooping -->
+        <div class="question-section">
+            <h2 class="text-xl">F: Face Drooping (ใบหน้าเบี้ยว)</h2>
+            <p class="mb-3 text-gray-700">สังเกตเห็นการยิ้มหรืออ้าปากของคนไข้ หากใบหน้าเบี้ยวไปด้านใดด้านหนึ่ง เช่น มุมปากตก หรือเปลือกตาขยับผิดปกติหรือไม่?</p>
+            <div class="options-group">
+                <label><input type="radio" name="face" value="yes" class="form-radio"> ใช่</label>
+                <label><input type="radio" name="face" value="no" class="form-radio"> ไม่ใช่</label>
+            </div>
+        </div>
+
+        <!-- A: Arm Weakness -->
+        <div class="question-section">
+            <h2 class="text-xl">A: Arm Weakness (แขนขาอ่อนแรง)</h2>
+            <p class="mb-3 text-gray-700">ผู้ป่วยมีอาการอ่อนแรงที่แขนหรือขาซีกใดซีกหนึ่งของร่างกาย (ลองให้ผู้ป่วยยกแขนขึ้นทั้งสองข้าง หากพบว่าแขนข้างหนึ่งไม่สามารถยกขึ้นได้เท่ากัน หรืออ่อนแรงอย่างรวดเร็ว) หรือไม่?</p>
+            <div class="options-group">
+                <label><input type="radio" name="arm" value="yes" class="form-radio"> ใช่</label>
+                <label><input type="radio" name="arm" value="no" class="form-radio"> ไม่ใช่</label>
+            </div>
+        </div>
+
+        <!-- S: Speech Difficulty -->
+        <div class="question-section">
+            <h2 class="text-xl">S: Speech Difficulty (พูดไม่ชัดหรือพูดลำบาก)</h2>
+            <p class="mb-3 text-gray-700">ผู้ป่วยมีปัญหาในการพูด พูดไม่ชัด เสียงพูดเปลี่ยนไป หรืออาจพูดไม่ออกหรือไม่ (เช่น อาจถามให้พูดประโยคที่คุ้นชิน)?</p>
+            <div class="options-group">
+                <label><input type="radio" name="speech" value="yes" class="form-radio"> ใช่</label>
+                <label><input type="radio" name="speech" value="no" class="form-radio"> ไม่ใช่</label>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button onclick="performAssessment()">ประเมินผล</button>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result-section" class="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">--- ผลการประเมินเบื้องต้น ---</h2>
+            <p id="result-summary" class="text-lg text-gray-800 mb-4"></p>
+            <ul class="list-disc list-inside text-gray-700">
+                <li>B: Balance (การทรงตัว): <span id="res-balance" class="font-semibold"></span></li>
+                <li>E: Eyes (สายตา): <span id="res-eyes" class="font-semibold"></span></li>
+                <li>F: Face Drooping (ใบหน้าเบี้ยว): <span id="res-face" class="font-semibold"></span></li>
+                <li>A: Arm Weakness (แขนขาอ่อนแรง): <span id="res-arm" class="font-semibold"></span></li>
+                <li>S: Speech Difficulty (พูดไม่ชัดหรือพูดลำบาก): <span id="res-speech" class="font-semibold"></span></li>
+            </ul>
+            <p id="emergency-call" class="warning text-red-700 mt-6 p-4 bg-red-100 rounded-lg font-bold hidden">
+                *** T: Time to Call Emergency Services (ถึงเวลาที่ต้องเรียกโรงพยาบาล) ***
+                <br>หากพบอาการผิดปกติหนึ่งข้อขึ้นไปตามหลัก BEFAST ควรรีบนำผู้ป่วยส่งโรงพยาบาลทันที เพื่อรับการรักษาอย่างเร่งด่วน เนื่องจากเวลาเป็นสิ่งสำคัญในการช่วยลดความเสียหายต่อสมองและเพิ่มโอกาสในการฟื้นตัว ดังนั้น การเข้ารับการรักษาภายใน 4.5 ชั่วโมงจึงเป็นสิ่งสำคัญที่จะช่วยเพิ่มประสิทธิภาพของการรักษา
+            </p>
+            <p id="no-abnormalities" class="normal text-green-700 mt-6 p-4 bg-green-100 rounded-lg font-bold hidden">
+                ไม่พบอาการผิดปกติที่ชัดเจนตามหลัก BEFAST
+                <br>อย่างไรก็ตาม หากยังคงกังวลเกี่ยวกับอาการ ควรปรึกษาแพทย์เพื่อการวินิจฉัยที่ถูกต้อง
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function performAssessment() {
+            // Get selected values for each BEFAST component
+            const balanceIssue = document.querySelector('input[name="balance"]:checked')?.value === 'yes';
+            const eyesIssue = document.querySelector('input[name="eyes"]:checked')?.value === 'yes';
+            const faceIssue = document.querySelector('input[name="face"]:checked')?.value === 'yes';
+            const armIssue = document.querySelector('input[name="arm"]:checked')?.value === 'yes';
+            const speechIssue = document.querySelector('input[name="speech"]:checked')?.value === 'yes';
+
+            // Check if all questions have been answered
+            if (!document.querySelector('input[name="balance"]:checked') ||
+                !document.querySelector('input[name="eyes"]:checked') ||
+                !document.querySelector('input[name="face"]:checked') ||
+                !document.querySelector('input[name="arm"]:checked') ||
+                !document.querySelector('input[name="speech"]:checked')) {
+                // Use a custom message box instead of alert()
+                displayMessageBox("กรุณาตอบคำถามให้ครบทุกข้อก่อนทำการประเมิน");
+                return;
+            }
+
+            // Display results
+            const resultSection = document.getElementById('result-section');
+            resultSection.style.display = 'block'; // Show the result section
+
+            document.getElementById('res-balance').textContent = balanceIssue ? 'ผิดปกติ' : 'ปกติ';
+            document.getElementById('res-eyes').textContent = eyesIssue ? 'ผิดปกติ' : 'ปกติ';
+            document.getElementById('res-face').textContent = faceIssue ? 'ผิดปกติ' : 'ปกติ';
+            document.getElementById('res-arm').textContent = armIssue ? 'ผิดปกติ' : 'ปกติ';
+            document.getElementById('res-speech').textContent = speechIssue ? 'ผิดปกติ' : 'ปกติ';
+
+            const emergencyCall = document.getElementById('emergency-call');
+            const noAbnormalities = document.getElementById('no-abnormalities');
+            const resultSummary = document.getElementById('result-summary');
+
+            if (balanceIssue || eyesIssue || faceIssue || armIssue || speechIssue) {
+                resultSummary.textContent = "พบอาการอย่างน้อยหนึ่งข้อตามหลัก BEFAST";
+                emergencyCall.classList.remove('hidden');
+                noAbnormalities.classList.add('hidden');
+            } else {
+                resultSummary.textContent = "ไม่พบอาการผิดปกติที่ชัดเจนตามหลัก BEFAST";
+                emergencyCall.classList.add('hidden');
+                noAbnormalities.classList.remove('hidden');
+            }
+        }
+
+        // Custom message box function (instead of alert)
+        function displayMessageBox(message) {
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #fff;
+                padding: 25px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                z-index: 1000;
+                text-align: center;
+                max-width: 350px;
+                width: 90%;
+                font-family: 'Inter', sans-serif;
+                color: #333;
+            `;
+            messageBox.innerHTML = `
+                <p class="text-lg mb-4">${message}</p>
+                <button onclick="this.parentNode.remove()" class="bg-blue-500 text-white px-5 py-2 rounded-md hover:bg-blue-600 transition duration-200">ตกลง</button>
+            `;
+            document.body.appendChild(messageBox);
+        }
+    </script>
+</body>
+</html>
