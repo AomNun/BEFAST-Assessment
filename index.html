@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แบบประเมิน BEFAST เบื้องต้น</title>
+    <title data-lang-key="pageTitle">แบบประเมิน BEFAST เบื้องต้น</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -107,6 +107,47 @@
             background-color: #c6f6d5;
             border-radius: 8px;
         }
+        .promo-section {
+            background-color: #d1e7dd; /* Light green background for promo */
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        .promo-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .promo-section h2 {
+            color: #1a4d2e; /* Dark green text */
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .promo-section p {
+            color: #33664a; /* Medium green text */
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .lang-switcher {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+        .lang-switcher button {
+            background-color: #607d8b; /* Grayish blue for language buttons */
+            padding: 8px 15px;
+            font-size: 0.9em;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+        .lang-switcher button.active {
+            background-color: #4299e1; /* Active language button */
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -115,91 +156,226 @@
                 width: 100%;
                 padding: 10px;
             }
+            .promo-section h2 {
+                font-size: 1.5em;
+            }
+            .promo-section p {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-3xl">แบบประเมิน BEFAST เบื้องต้น</h1>
-        <p class="text-gray-600 mb-6">โปรดตอบคำถามต่อไปนี้เพื่อประเมินอาการตามหลัก BEFAST (หากมีอาการผิดปกติ)</p>
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+            <button onclick="setLanguage('th')" id="lang-th" class="active">ไทย</button>
+            <button onclick="setLanguage('en')" id="lang-en">English</button>
+        </div>
+
+        <!-- Promotional Section -->
+        <div class="promo-section">
+            <h2 class="text-3xl" data-lang-key="promoTitle">ประเมินอาการโรคหลอดเลือดสมอง (STROKE) ด้วย BEFAST</h2>
+            <p class="mb-4" data-lang-key="promoDescription">สัญญาณเตือนอันตรายที่คุณควรรู้! ประเมินตัวเองง่ายๆ เพื่อการรักษาที่ทันท่วงที</p>
+            <!-- Image for brain and blood vessels with QR Code placeholder -->
+            <img src="https://placehold.co/400x400/4299e1/ffffff?text=Brain+%26+Blood+Vessels%0A%0A%2B+QR+Code+Here%0A%0A(Replace+this+image+with+your+actual+QR+Code+and+brain+imagery)" alt="ภาพประกอบสมองและหลอดเลือดสมอง พร้อม QR Code สำหรับแบบประเมิน BEFAST" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/333333?text=Image+Not+Found';" class="mx-auto">
+            <p class="mt-4 text-xl font-bold text-blue-800" data-lang-key="scanQrText">สแกน QR Code ด้านบนเพื่อเริ่มประเมิน!</p>
+        </div>
+
+        <h1 class="text-3xl" data-lang-key="mainTitle">แบบประเมิน BEFAST เบื้องต้น</h1>
+        <p class="text-gray-600 mb-6" data-lang-key="instructionText">โปรดตอบคำถามต่อไปนี้เพื่อประเมินอาการตามหลัก BEFAST (หากมีอาการผิดปกติ)</p>
 
         <!-- B: Balance -->
         <div class="question-section">
-            <h2 class="text-xl">B: Balance (การทรงตัว)</h2>
-            <p class="mb-3 text-gray-700">ผู้ป่วยมีอาการทรงตัวผิดปกติ เช่น เดินเซ ทรงตัวไม่มั่นคง หรือรู้สึกเวียนศีรษะอย่างรุนแรงหรือไม่?</p>
+            <h2 class="text-xl" data-lang-key="qBTitle">B: Balance (การทรงตัว)</h2>
+            <p class="mb-3 text-gray-700" data-lang-key="qBText">ผู้ป่วยมีอาการทรงตัวผิดปกติ เช่น เดินเซ ทรงตัวไม่มั่นคง หรือรู้สึกเวียนศีรษะอย่างรุนแรงหรือไม่?</p>
             <div class="options-group">
-                <label><input type="radio" name="balance" value="yes" class="form-radio"> ใช่</label>
-                <label><input type="radio" name="balance" value="no" class="form-radio"> ไม่ใช่</label>
+                <label><input type="radio" name="balance" value="yes" class="form-radio"> <span data-lang-key="yes">ใช่</span></label>
+                <label><input type="radio" name="balance" value="no" class="form-radio"> <span data-lang-key="no">ไม่ใช่</span></label>
             </div>
         </div>
 
         <!-- E: Eyes -->
         <div class="question-section">
-            <h2 class="text-xl">E: Eyes (สายตา)</h2>
-            <p class="mb-3 text-gray-700">ผู้ป่วยมีปัญหาการมองเห็นผิดปกติ เช่น การมองเห็นภาพซ้อน การสูญเสียการมองเห็นข้างใดข้างหนึ่ง หรือเห็นภาพไม่ชัดเจนหรือไม่?</p>
+            <h2 class="text-xl" data-lang-key="qETitle">E: Eyes (สายตา)</h2>
+            <p class="mb-3 text-gray-700" data-lang-key="qEText">ผู้ป่วยมีปัญหาการมองเห็นผิดปกติ เช่น การมองเห็นภาพซ้อน การสูญเสียการมองเห็นข้างใดข้างหนึ่ง หรือเห็นภาพไม่ชัดเจนหรือไม่?</p>
             <div class="options-group">
-                <label><input type="radio" name="eyes" value="yes" class="form-radio"> ใช่</label>
-                <label><input type="radio" name="eyes" value="no" class="form-radio"> ไม่ใช่</label>
+                <label><input type="radio" name="eyes" value="yes" class="form-radio"> <span data-lang-key="yes">ใช่</span></label>
+                <label><input type="radio" name="eyes" value="no" class="form-radio"> <span data-lang-key="no">ไม่ใช่</span></label>
             </div>
         </div>
 
         <!-- F: Face Drooping -->
         <div class="question-section">
-            <h2 class="text-xl">F: Face Drooping (ใบหน้าเบี้ยว)</h2>
-            <p class="mb-3 text-gray-700">สังเกตเห็นการยิ้มหรืออ้าปากของคนไข้ หากใบหน้าเบี้ยวไปด้านใดด้านหนึ่ง เช่น มุมปากตก หรือเปลือกตาขยับผิดปกติหรือไม่?</p>
+            <h2 class="text-xl" data-lang-key="qFTitle">F: Face Drooping (ใบหน้าเบี้ยว)</h2>
+            <p class="mb-3 text-gray-700" data-lang-key="qFText">สังเกตเห็นการยิ้มหรืออ้าปากของคนไข้ หากใบหน้าเบี้ยวไปด้านใดด้านหนึ่ง เช่น มุมปากตก หรือเปลือกตาขยับผิดปกติหรือไม่?</p>
             <div class="options-group">
-                <label><input type="radio" name="face" value="yes" class="form-radio"> ใช่</label>
-                <label><input type="radio" name="face" value="no" class="form-radio"> ไม่ใช่</label>
+                <label><input type="radio" name="face" value="yes" class="form-radio"> <span data-lang-key="yes">ใช่</span></label>
+                <label><input type="radio" name="face" value="no" class="form-radio"> <span data-lang-key="no">ไม่ใช่</span></label>
             </div>
         </div>
 
         <!-- A: Arm Weakness -->
         <div class="question-section">
-            <h2 class="text-xl">A: Arm Weakness (แขนขาอ่อนแรง)</h2>
-            <p class="mb-3 text-gray-700">ผู้ป่วยมีอาการอ่อนแรงที่แขนหรือขาซีกใดซีกหนึ่งของร่างกาย (ลองให้ผู้ป่วยยกแขนขึ้นทั้งสองข้าง หากพบว่าแขนข้างหนึ่งไม่สามารถยกขึ้นได้เท่ากัน หรืออ่อนแรงอย่างรวดเร็ว) หรือไม่?</p>
+            <h2 class="text-xl" data-lang-key="qATitle">A: Arm Weakness (แขนขาอ่อนแรง)</h2>
+            <p class="mb-3 text-gray-700" data-lang-key="qAText">ผู้ป่วยมีอาการอ่อนแรงที่แขนหรือขาซีกใดซีกหนึ่งของร่างกาย (ลองให้ผู้ป่วยยกแขนขึ้นทั้งสองข้าง หากพบว่าแขนข้างหนึ่งไม่สามารถยกขึ้นได้เท่ากัน หรืออ่อนแรงอย่างรวดเร็ว) หรือไม่?</p>
             <div class="options-group">
-                <label><input type="radio" name="arm" value="yes" class="form-radio"> ใช่</label>
-                <label><input type="radio" name="arm" value="no" class="form-radio"> ไม่ใช่</label>
+                <label><input type="radio" name="arm" value="yes" class="form-radio"> <span data-lang-key="yes">ใช่</span></label>
+                <label><input type="radio" name="arm" value="no" class="form-radio"> <span data-lang-key="no">ไม่ใช่</span></label>
             </div>
         </div>
 
         <!-- S: Speech Difficulty -->
         <div class="question-section">
-            <h2 class="text-xl">S: Speech Difficulty (พูดไม่ชัดหรือพูดลำบาก)</h2>
-            <p class="mb-3 text-gray-700">ผู้ป่วยมีปัญหาในการพูด พูดไม่ชัด เสียงพูดเปลี่ยนไป หรืออาจพูดไม่ออกหรือไม่ (เช่น อาจถามให้พูดประโยคที่คุ้นชิน)?</p>
+            <h2 class="text-xl" data-lang-key="qSTitle">S: Speech Difficulty (พูดไม่ชัดหรือพูดลำบาก)</h2>
+            <p class="mb-3 text-gray-700" data-lang-key="qSText">ผู้ป่วยมีปัญหาในการพูด พูดไม่ชัด เสียงพูดเปลี่ยนไป หรืออาจพูดไม่ออกหรือไม่ (เช่น อาจถามให้พูดประโยคที่คุ้นชิน)?</p>
             <div class="options-group">
-                <label><input type="radio" name="speech" value="yes" class="form-radio"> ใช่</label>
-                <label><input type="radio" name="speech" value="no" class="form-radio"> ไม่ใช่</label>
+                <label><input type="radio" name="speech" value="yes" class="form-radio"> <span data-lang-key="yes">ใช่</span></label>
+                <label><input type="radio" name="speech" value="no" class="form-radio"> <span data-lang-key="no">ไม่ใช่</span></label>
             </div>
         </div>
 
         <div class="button-group">
-            <button onclick="performAssessment()">ประเมินผล</button>
+            <button onclick="performAssessment()" data-lang-key="assessButton">ประเมินผล</button>
         </div>
 
         <!-- Result Section -->
         <div id="result-section" class="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold text-blue-800 mb-4">--- ผลการประเมินเบื้องต้น ---</h2>
+            <h2 class="text-2xl font-bold text-blue-800 mb-4" data-lang-key="resultTitle">--- ผลการประเมินเบื้องต้น ---</h2>
             <p id="result-summary" class="text-lg text-gray-800 mb-4"></p>
             <ul class="list-disc list-inside text-gray-700">
-                <li>B: Balance (การทรงตัว): <span id="res-balance" class="font-semibold"></span></li>
-                <li>E: Eyes (สายตา): <span id="res-eyes" class="font-semibold"></span></li>
-                <li>F: Face Drooping (ใบหน้าเบี้ยว): <span id="res-face" class="font-semibold"></span></li>
-                <li>A: Arm Weakness (แขนขาอ่อนแรง): <span id="res-arm" class="font-semibold"></span></li>
-                <li>S: Speech Difficulty (พูดไม่ชัดหรือพูดลำบาก): <span id="res-speech" class="font-semibold"></span></li>
+                <li><span data-lang-key="resB">B: Balance (การทรงตัว)</span>: <span id="res-balance" class="font-semibold"></span></li>
+                <li><span data-lang-key="resE">E: Eyes (สายตา)</span>: <span id="res-eyes" class="font-semibold"></span></li>
+                <li><span data-lang-key="resF">F: Face Drooping (ใบหน้าเบี้ยว)</span>: <span id="res-face" class="font-semibold"></span></li>
+                <li><span data-lang-key="resA">A: Arm Weakness (แขนขาอ่อนแรง)</span>: <span id="res-arm" class="font-semibold"></span></li>
+                <li><span data-lang-key="resS">S: Speech Difficulty (พูดไม่ชัดหรือพูดลำบาก)</span>: <span id="res-speech" class="font-semibold"></span></li>
             </ul>
             <p id="emergency-call" class="warning text-red-700 mt-6 p-4 bg-red-100 rounded-lg font-bold hidden">
-                *** T: Time to Call Emergency Services (ถึงเวลาที่ต้องเรียกโรงพยาบาล) ***
-                <br>หากพบอาการผิดปกติหนึ่งข้อขึ้นไปตามหลัก BEFAST ควรรีบนำผู้ป่วยส่งโรงพยาบาลทันที เพื่อรับการรักษาอย่างเร่งด่วน เนื่องจากเวลาเป็นสิ่งสำคัญในการช่วยลดความเสียหายต่อสมองและเพิ่มโอกาสในการฟื้นตัว ดังนั้น การเข้ารับการรักษาภายใน 4 ชั่วโมงจึงเป็นสิ่งสำคัญที่จะช่วยเพิ่มประสิทธิภาพของการรักษา หรือโทร 1719 เพื่อปรึกษาอาการได้ทันที
+                <span data-lang-key="emergencyCallTitle">*** T: Time to Call Emergency Services (ถึงเวลาที่ต้องเรียกโรงพยาบาล) ***</span>
+                <br><span data-lang-key="emergencyCallText">หากพบอาการผิดปกติหนึ่งข้อขึ้นไปตามหลัก BEFAST ควรรีบนำผู้ป่วยส่งโรงพยาบาลทันที เพื่อรับการรักษาอย่างเร่งด่วน เนื่องจากเวลาเป็นสิ่งสำคัญในการช่วยลดความเสียหายต่อสมองและเพิ่มโอกาสในการฟื้นตัว ดังนั้น การเข้ารับการรักษาภายใน 4.5 ชั่วโมงจึงเป็นสิ่งสำคัญที่จะช่วยเพิ่มประสิทธิภาพของการรักษา</span>
             </p>
             <p id="no-abnormalities" class="normal text-green-700 mt-6 p-4 bg-green-100 rounded-lg font-bold hidden">
-                ไม่พบอาการผิดปกติที่ชัดเจนตามหลัก BEFAST
-                <br>อย่างไรก็ตาม หากยังคงกังวลเกี่ยวกับอาการ ควรปรึกษาแพทย์เพื่อการวินิจฉัยที่ถูกต้อง
+                <span data-lang-key="noAbnormalitiesText1">ไม่พบอาการผิดปกติที่ชัดเจนตามหลัก BEFAST</span>
+                <br><span data-lang-key="noAbnormalitiesText2">อย่างไรก็ตาม หากยังคงกังวลเกี่ยวกับอาการ ควรปรึกษาแพทย์เพื่อการวินิจฉัยที่ถูกต้อง</span>
             </p>
         </div>
     </div>
 
     <script>
+        // Language Translations
+        const translations = {
+            th: {
+                pageTitle: "แบบประเมิน BEFAST เบื้องต้น",
+                promoTitle: "ประเมินอาการโรคหลอดเลือดสมอง (STROKE) ด้วย BEFAST",
+                promoDescription: "สัญญาณเตือนอันตรายที่คุณควรรู้! ประเมินตัวเองง่ายๆ เพื่อการรักษาที่ทันท่วงที",
+                scanQrText: "สแกน QR Code ด้านบนเพื่อเริ่มประเมิน!",
+                mainTitle: "แบบประเมิน BEFAST เบื้องต้น",
+                instructionText: "โปรดตอบคำถามต่อไปนี้เพื่อประเมินอาการตามหลัก BEFAST (หากมีอาการผิดปกติ)",
+                qBTitle: "B: Balance (การทรงตัว)",
+                qBText: "ผู้ป่วยมีอาการทรงตัวผิดปกติ เช่น เดินเซ ทรงตัวไม่มั่นคง หรือรู้สึกเวียนศีรษะอย่างรุนแรงหรือไม่?",
+                qETitle: "E: Eyes (สายตา)",
+                qEText: "ผู้ป่วยมีปัญหาการมองเห็นผิดปกติ เช่น การมองเห็นภาพซ้อน การสูญเสียการมองเห็นข้างใดข้างหนึ่ง หรือเห็นภาพไม่ชัดเจนหรือไม่?",
+                qFTitle: "F: Face Drooping (ใบหน้าเบี้ยว)",
+                qFText: "สังเกตเห็นการยิ้มหรืออ้าปากของคนไข้ หากใบหน้าเบี้ยวไปด้านใดด้านหนึ่ง เช่น มุมปากตก หรือเปลือกตาขยับผิดปกติหรือไม่?",
+                qATitle: "A: Arm Weakness (แขนขาอ่อนแรง)",
+                qAText: "ผู้ป่วยมีอาการอ่อนแรงที่แขนหรือขาซีกใดซีกหนึ่งของร่างกาย (ลองให้ผู้ป่วยยกแขนขึ้นทั้งสองข้าง หากพบว่าแขนข้างหนึ่งไม่สามารถยกขึ้นได้เท่ากัน หรืออ่อนแรงอย่างรวดเร็ว) หรือไม่?",
+                qSTitle: "S: Speech Difficulty (พูดไม่ชัดหรือพูดลำบาก)",
+                qSText: "ผู้ป่วยมีปัญหาในการพูด พูดไม่ชัด เสียงพูดเปลี่ยนไป หรืออาจพูดไม่ออกหรือไม่ (เช่น อาจถามให้พูดประโยคที่คุ้นชิน)?",
+                yes: "ใช่",
+                no: "ไม่ใช่",
+                assessButton: "ประเมินผล",
+                resultTitle: "--- ผลการประเมินเบื้องต้น ---",
+                resB: "B: Balance (การทรงตัว)",
+                resE: "E: Eyes (สายตา)",
+                resF: "F: Face Drooping (ใบหน้าเบี้ยว)",
+                resA: "A: Arm Weakness (แขนขาอ่อนแรง)",
+                resS: "S: Speech Difficulty (พูดไม่ชัดหรือพูดลำบาก)",
+                abnormal: "ผิดปกติ",
+                normal: "ปกติ",
+                resultSummaryAbnormal: "พบอาการอย่างน้อยหนึ่งข้อตามหลัก BEFAST",
+                resultSummaryNormal: "ไม่พบอาการผิดปกติที่ชัดเจนตามหลัก BEFAST",
+                emergencyCallTitle: "*** T: Time to Call Emergency Services (ถึงเวลาที่ต้องเรียกโรงพยาบาล) ***",
+                emergencyCallText: "หากพบอาการผิดปกติหนึ่งข้อขึ้นไปตามหลัก BEFAST ควรรีบนำผู้ป่วยส่งโรงพยาบาลทันที เพื่อรับการรักษาอย่างเร่งด่วน เนื่องจากเวลาเป็นสิ่งสำคัญในการช่วยลดความเสียหายต่อสมองและเพิ่มโอกาสในการฟื้นตัว ดังนั้น การเข้ารับการรักษาภายใน 4.5 ชั่วโมงจึงเป็นสิ่งสำคัญที่จะช่วยเพิ่มประสิทธิภาพของการรักษา",
+                noAbnormalitiesText1: "ไม่พบอาการผิดปกติที่ชัดเจนตามหลัก BEFAST",
+                noAbnormalitiesText2: "อย่างไรก็ตาม หากยังคงกังวลเกี่ยวกับอาการ ควรปรึกษาแพทย์เพื่อการวินิจฉัยที่ถูกต้อง",
+                messageBoxCompleteAll: "กรุณาตอบคำถามให้ครบทุกข้อก่อนทำการประเมิน",
+                messageBoxOK: "ตกลง"
+            },
+            en: {
+                pageTitle: "BEFAST Preliminary Assessment",
+                promoTitle: "Assess Stroke Symptoms with BEFAST",
+                promoDescription: "Dangerous warning signs you should know! Self-assess easily for timely treatment.",
+                scanQrText: "Scan the QR Code above to start the assessment!",
+                mainTitle: "BEFAST Preliminary Assessment",
+                instructionText: "Please answer the following questions to assess symptoms based on BEFAST (if any abnormalities):",
+                qBTitle: "B: Balance",
+                qBText: "Does the patient experience sudden loss of balance or coordination, such as stumbling, difficulty walking, or severe dizziness?",
+                qETitle: "E: Eyes",
+                qEText: "Does the patient have sudden vision problems, such as blurred vision, loss of vision in one eye, or double vision?",
+                qFTitle: "F: Face Drooping",
+                qFText: "When the patient smiles or opens their mouth, does one side of their face droop, such as a crooked smile or an eyelid drooping?",
+                qATitle: "A: Arm Weakness",
+                qAText: "Does the patient experience sudden weakness or numbness in one arm or leg? (Ask the patient to raise both arms; does one arm drift downward?)",
+                qSTitle: "S: Speech Difficulty",
+                qSText: "Does the patient have sudden difficulty speaking, slurred speech, or trouble understanding simple sentences? (e.g., ask them to repeat a simple phrase)",
+                yes: "Yes",
+                no: "No",
+                assessButton: "Assess",
+                resultTitle: "--- Preliminary Assessment Results ---",
+                resB: "B: Balance",
+                resE: "E: Eyes",
+                resF: "F: Face Drooping",
+                resA: "A: Arm Weakness",
+                resS: "S: Speech Difficulty",
+                abnormal: "Abnormal",
+                normal: "Normal",
+                resultSummaryAbnormal: "At least one BEFAST symptom found.",
+                resultSummaryNormal: "No clear BEFAST symptoms found.",
+                emergencyCallTitle: "*** T: Time to Call Emergency Services ***",
+                emergencyCallText: "If at least one BEFAST symptom is found, the patient should be rushed to the hospital immediately for urgent treatment. Time is critical in reducing brain damage and improving recovery chances. Therefore, receiving treatment within 4.5 hours is crucial for enhancing treatment effectiveness.",
+                noAbnormalitiesText1: "No clear BEFAST symptoms found.",
+                noAbnormalitiesText2: "However, if you are still concerned about symptoms, please consult a doctor for an accurate diagnosis.",
+                messageBoxCompleteAll: "Please answer all questions before assessing.",
+                messageBoxOK: "OK"
+            }
+        };
+
+        let currentLang = 'th'; // Default language
+
+        // Function to set the language
+        function setLanguage(lang) {
+            currentLang = lang;
+            // Update page title
+            document.querySelector('title').textContent = translations[lang].pageTitle;
+
+            // Update all elements with data-lang-key attribute
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update radio button labels specifically
+            document.querySelectorAll('.options-group label span[data-lang-key]').forEach(span => {
+                const key = span.getAttribute('data-lang-key');
+                if (translations[lang][key]) {
+                    span.textContent = translations[lang][key];
+                }
+            });
+
+            // Update active language button styling
+            document.getElementById('lang-th').classList.remove('active');
+            document.getElementById('lang-en').classList.remove('active');
+            document.getElementById(`lang-${lang}`).classList.add('active');
+
+            // Re-run assessment to update result section if it's already visible
+            const resultSection = document.getElementById('result-section');
+            if (resultSection.style.display === 'block') {
+                performAssessment(); // This will re-render results in the new language
+            }
+        }
+
         function performAssessment() {
             // Get selected values for each BEFAST component
             const balanceIssue = document.querySelector('input[name="balance"]:checked')?.value === 'yes';
@@ -214,8 +390,7 @@
                 !document.querySelector('input[name="face"]:checked') ||
                 !document.querySelector('input[name="arm"]:checked') ||
                 !document.querySelector('input[name="speech"]:checked')) {
-                // Use a custom message box instead of alert()
-                displayMessageBox("กรุณาตอบคำถามให้ครบทุกข้อก่อนทำการประเมิน");
+                displayMessageBox(translations[currentLang].messageBoxCompleteAll);
                 return;
             }
 
@@ -223,22 +398,22 @@
             const resultSection = document.getElementById('result-section');
             resultSection.style.display = 'block'; // Show the result section
 
-            document.getElementById('res-balance').textContent = balanceIssue ? 'ผิดปกติ' : 'ปกติ';
-            document.getElementById('res-eyes').textContent = eyesIssue ? 'ผิดปกติ' : 'ปกติ';
-            document.getElementById('res-face').textContent = faceIssue ? 'ผิดปกติ' : 'ปกติ';
-            document.getElementById('res-arm').textContent = armIssue ? 'ผิดปกติ' : 'ปกติ';
-            document.getElementById('res-speech').textContent = speechIssue ? 'ผิดปกติ' : 'ปกติ';
+            document.getElementById('res-balance').textContent = balanceIssue ? translations[currentLang].abnormal : translations[currentLang].normal;
+            document.getElementById('res-eyes').textContent = eyesIssue ? translations[currentLang].abnormal : translations[currentLang].normal;
+            document.getElementById('res-face').textContent = faceIssue ? translations[currentLang].abnormal : translations[currentLang].normal;
+            document.getElementById('res-arm').textContent = armIssue ? translations[currentLang].abnormal : translations[currentLang].normal;
+            document.getElementById('res-speech').textContent = speechIssue ? translations[currentLang].abnormal : translations[currentLang].normal;
 
             const emergencyCall = document.getElementById('emergency-call');
             const noAbnormalities = document.getElementById('no-abnormalities');
             const resultSummary = document.getElementById('result-summary');
 
             if (balanceIssue || eyesIssue || faceIssue || armIssue || speechIssue) {
-                resultSummary.textContent = "พบอาการอย่างน้อยหนึ่งข้อตามหลัก BEFAST";
+                resultSummary.textContent = translations[currentLang].resultSummaryAbnormal;
                 emergencyCall.classList.remove('hidden');
                 noAbnormalities.classList.add('hidden');
             } else {
-                resultSummary.textContent = "ไม่พบอาการผิดปกติที่ชัดเจนตามหลัก BEFAST";
+                resultSummary.textContent = translations[currentLang].resultSummaryNormal;
                 emergencyCall.classList.add('hidden');
                 noAbnormalities.classList.remove('hidden');
             }
@@ -265,10 +440,15 @@
             `;
             messageBox.innerHTML = `
                 <p class="text-lg mb-4">${message}</p>
-                <button onclick="this.parentNode.remove()" class="bg-blue-500 text-white px-5 py-2 rounded-md hover:bg-blue-600 transition duration-200">ตกลง</button>
+                <button onclick="this.parentNode.remove()" class="bg-blue-500 text-white px-5 py-2 rounded-md hover:bg-blue-600 transition duration-200">${translations[currentLang].messageBoxOK}</button>
             `;
             document.body.appendChild(messageBox);
         }
+
+        // Set initial language when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage('th'); // Default to Thai
+        });
     </script>
 </body>
 </html>
